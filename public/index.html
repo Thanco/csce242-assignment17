@@ -23,8 +23,9 @@
                         <div>
                             <img id="img-preview" src="https://place-hold.it/200x300" alt="Placeholder Image">
                         </div>
-                        <form id="add-craft-form">
+                        <form id="add-craft-form" class="form-craft-info">
                             <ul>
+                                <input type="text" name="_id" id="_id" class="hidden" value="-1">
                                 <li><label for="name">Name: </label><input type="text" id="name" name="name" minlength="4" required></li>
                                 <li><label for="description">Description: </label></li>
                                 <li><textarea id="description" name="description" rows="4" cols="50" minlength="10" required></textarea></li>
