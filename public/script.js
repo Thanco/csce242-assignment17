@@ -52,15 +52,6 @@ class Craft {
         const li = document.createElement('li');
         li.innerHTML = `<input type="text" name="supplies" value="${supply}" minlength="4" required>`;
 
-        // const input = document.createElement('input');
-        // input.type = 'text';
-        // input.name = 'supplies';
-        // input.value = supply;
-        // input.minLength = 4;
-        // input.required = true;
-
-        // li.appendChild(input);
-
         const span = document.createElement('span');
         span.classList.add('btn-remove-item');
         span.textContent = '✖';
@@ -96,7 +87,8 @@ class Craft {
                             <li>
                                 <label for="supplies">Supplies:</label>
                                 <li><ul class="ul-supplies">
-                                    ${this.supplies.map(supply => this.supplyListItem(supply).outerHTML).join('')}
+                                    ${this.supplies.map(supply =>
+                                        this.supplyListItem(supply).outerHTML).join('')}
                                 </ul></li>
                                 <li><button type="button" class="btn-add-supply">Add Supply</button></li>
                             </li>
@@ -214,8 +206,6 @@ class Craft {
         const btnDelete = content.querySelector('.btn-delete');
         btnDelete.textContent = 'Yes';
         btnDelete.addEventListener('click', async () => {
-            alert('Delete');
-            
             const del = await fetch(`/api/crafts/${this._id}`, {
                 method: 'DELETE',
             });
@@ -357,9 +347,8 @@ document.getElementById('btn-add-supply').addEventListener('click', () => {
 getCrafts();
 
 const showItemDetails = (craft) => {
-    const modal = document.createElement('div');
+    const modal = craft.modalDisplay;
     modal.classList.add('modal');
-    modal.innerHTML = craft.modalDisplay.outerHTML;
 
     initItemViewOnClicks(modal, craft);
 
